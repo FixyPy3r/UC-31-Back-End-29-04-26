@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Alunos</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>Aluno</th>
+            <th>Matrícula</th>
+        </tr>
+
+        {% for aluno in alunos %}
+        <tr>
+            <td>{{ aluno.nome }}</td>
+            <td>{{ aluno.matricula }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</body>
+</html>
