@@ -106,24 +106,5 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    function enviar() {
-      const nome = document.getElementById('nome').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const mensagem = document.getElementById('mensagem').value.trim();
-
-      if (!nome || !email || !mensagem) {
-        alert('Preencha nome, e-mail e mensagem!');
-        return;
-      }
-
-      document.getElementById('msg-sucesso').classList.remove('d-none');
-      document.getElementById('nome').value = '';
-      document.getElementById('email').value = '';
-      document.getElementById('telefone').value = '';
-      document.getElementById('assunto').value = '';
-      document.getElementById('mensagem').value = '';
-    }
-  </script>
 </body>
 </html>
