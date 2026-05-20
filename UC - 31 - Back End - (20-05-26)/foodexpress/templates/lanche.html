@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FoodExpress — {{ nome }}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+      <a class="navbar-brand fw-bold fs-4" href="/">FoodExpress</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/cardapio">Cardápio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/pedidos">Pedidos</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contato">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="bg-dark text-white text-center py-4">
+    <h2 class="fw-bold">Você Escolheu: {{ nome }}!</h2>
+  </div>
+
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+
+        {% if info %}
+          {% set img_map = {'hamburguer':'burger.jpg','pizza':'pizza.jpg','batata':'batata.jpg','milkshake':'milkshake.jpg'} %}
+          {% set img = img_map.get(nome.lower()) %}
+
+          <div class="card shadow">
+            {% if nome.lower() == 'hamburguer' %}
+            <img src="{{url_for('static', filename='hamburguer.jpg')}}" class="card-img-top" alt="Hamburguer">
+            {% elif nome.lower() == 'pizza' %}
+            <img src="{{url_for('static', filename='pizza.jpg')}}" class="card-img-top" alt="Pizza">
+            {% elif nome.lower() == 'batata' %}
+            <img src="{{url_for('static', filename='batata.jpeg')}}" class="card-img-top" alt="Batata Frita">
+            {% elif nome.lower() == 'milkshake' %}
+            <img src="{{url_for('static', filename='milkshake.jpg')}}" class="card-img-top" alt="Milkshake">
+            {% endif %}
+
+            <div class="card-body text-center">
+              <span class="badge bg-success mb-3">Disponível</span>
+              <h3 class="card-title fw-bold">{{ info.titulo }}</h3>
+              <p class="card-text text-muted">{{ info.msg }}</p>
+              <p class="fw-bold text-danger fs-4">{{ info.preco }}</p>
+              <a href="/pedidos" class="btn btn-danger btn-lg w-100">Adicionar ao Pedido</a>
+            </div>
+          </div>
+
+        {% else %}
+          <div class="card border-warning shadow text-center">
+            <div class="card-body py-5">
+              <h1 class="display-1"></h1>
+              <h4 class="card-title fw-bold text-danger">Lanche não encontrado!</h4>
+              <p class="card-text text-muted">
+                Não temos <strong>"{{ nome }}"</strong> no cardápio.<br>
+                Tente: <strong>pizza</strong>, <strong>hamburguer</strong>, <strong>batata</strong> ou <strong>milkshake</strong>.
+              </p>
+              <a href="/cardapio" class="btn btn-danger">Ver Cardápio Completo</a>
+            </div>
+          </div>
+        {% endif %}
+
+        <div class="text-center mt-3">
+          <a href="/cardapio" class="btn btn-outline-secondary">← Voltar ao Cardápio</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
