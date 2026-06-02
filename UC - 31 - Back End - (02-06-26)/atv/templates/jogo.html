@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Campeonato de Games</title>
+</head>
+<body>
+    <h2>Inscricao - Campeonato de Games</h2>
+ 
+    <form action="/cadastro" method="POST">
+
+        <label>Nickname:</label><br>
+        <input type="text" name="nickname"><br><br>
+ 
+        <label>Jogo:</label><br>
+        <select name="jogo">
+            <option value="">Selecione um jogo para competir</option>
+            <option value="CS">Counter Strike 2</option>
+            <option value="Valorant">Valorant</option>
+            <option value="Fortnite">Fortnite</option>
+            <option value="Minecraft Speedrun">Speedrun</option>
+        </select><br><br>
+ 
+        <label>E-mail:</label><br>
+        <input type="text" name="email"><br><br>
+ 
+        <button type="submit">Cadastrar</button>
+
+    </form>
+ 
+    <p>{{mensagem}}</p>
+</body>
+</html>
