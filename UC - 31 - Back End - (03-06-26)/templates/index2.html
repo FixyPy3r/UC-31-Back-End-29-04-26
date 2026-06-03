@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 420px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .erro {
+            color: red;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .sucesso {
+            margin-top: 24px;
+            padding: 16px;
+            background-color: #e8f5e9;
+            border-radius: 6px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .sucesso p {
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+
+        .sucesso .titulo {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastrar</h2>
+
+        <form action="/cadastro" method="POST">
+            <label>Nome:</label>
+            <input type="text" name="nome">
+
+            <label>E-mail:</label>
+            <input type="text" name="email">
+
+            <label>Telefone:</label>
+            <input type="text" name="phone">
+
+            <label>CPF:</label>
+            <input type="text" name="cpf">
+
+            <label>Cidade:</label>
+            <input type="text" name="cidade">
+
+            <label>Estado:</label>
+            <input type="text" name="estado">
+
+            <label>Curso:</label>
+            <input type="text" name="curso">
+
+            <label>Idade:</label>
+            <input type="text" name="idade">
+
+            <label>Senha:</label>
+            <input type="password" name="senha">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+
+        {% if erros %}
+            {% for erro in erros %}
+                <p class="erro"> {{ erro }}</p>
+            {% endfor %}
+        {% endif %}
+
+        {% if dados %}
+            <div class="sucesso">
+                <p class="titulo">Cadastro realizado com sucesso!</p>
+                <p><strong>Nome:</strong> {{ dados.nome }}</p>
+                <p><strong>E-mail:</strong> {{ dados.email }}</p>
+                <p><strong>Telefone:</strong> {{ dados.phone }}</p>
+                <p><strong>CPF:</strong> {{ dados.cpf }}</p>
+                <p><strong>Cidade:</strong> {{ dados.cidade }}</p>
+                <p><strong>Estado:</strong> {{ dados.estado }}</p>
+                <p><strong>Curso:</strong> {{ dados.curso }}</p>
+                <p><strong>Idade:</strong> {{ dados.idade }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
