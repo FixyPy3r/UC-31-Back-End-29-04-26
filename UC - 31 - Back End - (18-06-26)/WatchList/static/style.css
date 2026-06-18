@@ -1,0 +1,129 @@
+/*
+  style.css
+  ---------
+  Como o index.html não tem nenhuma classe (class="..."), todo o
+  estilo abaixo é feito "mirando" direto nas tags HTML (h1, form,
+  button, li...) e, em alguns pontos, no atributo "action" dos
+  formulários — já que cada form aponta para uma rota diferente
+  (/adicionar, /marcar/<indice>, /limpar), isso também serve como
+  um jeito de diferenciar um do outro sem precisar de classes.
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+/* corpo da página: como não existe uma <div> "container", o
+   max-width + margin: auto aqui mesmo no body é o que centraliza
+   o conteúdo na tela */
+body {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+  background-color: #14171f;
+  color: #eef0f3;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 28px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #2c3242;
+  margin: 28px 0;
+}
+
+p {
+  text-align: center;
+  color: #7c8494;
+  padding: 16px 0;
+}
+
+/* ---------- botões: estilo base para qualquer <button> ---------- */
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #eef0f3;
+  background-color: #3a4356;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* ---------- formulário de adicionar ---------- */
+/* a action="/adicionar" é um caminho fixo, então dá pra escolher
+   exatamente esse formulário com o seletor abaixo */
+form[action="/adicionar"] {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+form[action="/adicionar"] input {
+  flex: 1;
+}
+
+form[action="/adicionar"] button {
+  background-color: #f2b134;
+  color: #14171f;
+}
+
+/* ---------- input de texto ---------- */
+input[type="text"] {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #2c3242;
+  background-color: #1e2230;
+  color: #eef0f3;
+  font-size: 15px;
+}
+
+input[type="text"]::placeholder {
+  color: #7c8494;
+}
+
+/* ---------- lista de filmes ---------- */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: #1e2230;
+  border: 1px solid #2c3242;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+/* ---------- formulário de marcar/desmarcar ---------- */
+/* action="/marcar/0", "/marcar/1"... o número muda, então usamos
+   "começa com" (^=) em vez de igualdade exata */
+li form[action^="/marcar/"] {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* ---------- formulário de limpar a lista ---------- */
+form[action="/limpar"] {
+  text-align: center;
+  margin-top: 12px;
+}
+
+form[action="/limpar"] button {
+  background-color: #e2574c;
+}
