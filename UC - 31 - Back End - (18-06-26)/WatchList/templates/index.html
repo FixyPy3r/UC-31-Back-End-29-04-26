@@ -9,11 +9,6 @@
 
   <h1>Watch List</h1>
 
-  <!--
-    Formulário para adicionar um novo filme/série.
-    Ao clicar em "Adicionar", o navegador envia os dados para
-    a rota /adicionar do app.py
-  -->
   <form action="{{ url_for('adicionar') }}" method="post">
     <input type="text" name="nome" placeholder="Add Filme/Série" required>
     <button type="submit">Adicionar</button>
@@ -23,7 +18,7 @@
 
   {% if filmes %}
 
-    <!-- percorre cada filme da lista, um por um -->
+    
     <ul>
       {% for filme in filmes %}
         <li>
@@ -34,7 +29,7 @@
             | Já Assisti
           {% endif %}
 
-          
+          <!-- botão liga/desliga -->
           <form action="{{ url_for('marcar', indice=loop.index0) }}" method="post">
             {% if filme.assistido %}
               <button type="submit">Desmarcar como assistido</button>
@@ -55,7 +50,7 @@
 
   <hr>
 
-  <!-- formulário para apagar tudo da sessão -->
+  <!-- apaga tudo -->
   <form action="{{ url_for('limpar') }}" method="post">
     <button type="submit">Limpar</button>
   </form>
