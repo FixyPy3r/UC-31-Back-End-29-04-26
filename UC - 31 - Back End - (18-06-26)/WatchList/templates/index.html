@@ -3,10 +3,11 @@
 <head>
   <meta charset="utf-8">
   <title>Watch List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-  <h1>Lista de filmes e séries</h1>
+  <h1>Watch List</h1>
 
   <!--
     Formulário para adicionar um novo filme/série.
@@ -30,10 +31,10 @@
           {{ filme.nome }}
 
           {% if filme.assistido %}
-            Já Assisti
+            | Já Assisti
           {% endif %}
 
-          <!-- formulário só com o botão de marcar/desmarcar -->
+          
           <form action="{{ url_for('marcar', indice=loop.index0) }}" method="post">
             {% if filme.assistido %}
               <button type="submit">Desmarcar como assistido</button>
