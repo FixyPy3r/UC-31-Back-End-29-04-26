@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Buscar Livro</title>
+</head>
+<body>
+
+    <h1>Buscar Livro por Título</h1>
+
+    <form action="{{ url_for('buscar') }}" method="POST">
+        <label>Título:</label><br>
+        <input type="text" name="titulo"><br><br>
+        <button type="submit">Buscar</button>
+    </form>
+
+    <br>
+
+    {% if buscou %}
+        {% if livro %}
+            <h2>Livro encontrado:</h2>
+            <p>Título: {{ livro.titulo }}</p>
+            <p>Autor: {{ livro.autor }}</p>
+            <p>Ano: {{ livro.ano }}</p>
+            <p>Categoria: {{ livro.categoria }}</p>
+            <p>Quantidade disponível: {{ livro.quantidade }}</p>
+        {% else %}
+            <p>Livro não encontrado.</p>
+        {% endif %}
+    {% endif %}
+
+    <br>
+    <a href="{{ url_for('index') }}">Voltar ao cadastro</a>
+    <a href="{{ url_for('livros') }}">Ver todos os livros</a>
+
+</body>
+</html>
