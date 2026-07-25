@@ -8,7 +8,6 @@ ARQUIVO = "livros.json"
 
 
 def ler_livros():
-    # Se o arquivo não existir, cria automaticamente
     if not os.path.exists(ARQUIVO):
         with open(ARQUIVO, "w") as f:
             json.dump([], f)
@@ -36,15 +35,12 @@ def cadastrar():
     categoria = request.form["categoria"]
     quantidade = request.form["quantidade"]
 
-    # Validação: campos vazios
     if titulo == "" or autor == "" or ano == "" or categoria == "" or quantidade == "":
         return "Preencha todos os campos!"
 
-    # Validação: ano numérico
     if not ano.isdigit():
         return "O ano deve conter apenas números!"
 
-    # Validação: quantidade numérica e maior que zero
     if not quantidade.isdigit() or int(quantidade) <= 0:
         return "A quantidade deve ser um número inteiro maior que zero!"
 
