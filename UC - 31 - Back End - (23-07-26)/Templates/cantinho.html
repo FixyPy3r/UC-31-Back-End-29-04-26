@@ -5,14 +5,14 @@
     <title>Meu Cantinho</title>
 </head>
 <body>
-    <h1>Olá, {{ nome }}! Este é o seu cantinho secreto.</h1>
+    <h1>Olá, {{ nome }}! Este é o seu cantinho secreto somente seu.</h1>
 
-    <p><strong>Cor favorita:</strong> {{ cor }}</p>
-    <p><strong>Linguagem favorita:</strong> {{ linguagem }}</p>
-    <p><strong>Frase que me representa:</strong> {{ frase }}</p>
+    <p><strong>Sua cor favorita:</strong> {{ cor }}</p>
+    <p><strong>Sua linguagem favorita:</strong> {{ linguagem }}</p>
+    <p><strong>Uma frase que me representa:</strong> {{ frase }}</p>
 
-    <p>Você visitou esse cantinho {{ visitas }} vez(es) hoje.</p>
+    <p>Você visitou o cantinho {{ visitas }} vez(es) hoje {{ nome }}.</p>
 
-    <a href="{{ url_for('painel') }}">← Voltar ao painel</a>
+    <a href="{{ url_for('painel') }}">Voltar</a>
 </body>
 </html>
