@@ -1,7 +1,9 @@
 from flask import Flask, render_template, session, redirect, url_for
 
+app = Flask(__name__)
+app.secret_key = 'chavesegredo_#acabahoradaIA'
+
 @app.route('/cantinho')
-@login_necessario
 def cantinho():
     nome = session.get('usuario_nome')
 
@@ -10,8 +12,9 @@ def cantinho():
     session['visitas_cantinho'] = visitas
 
     return render_template('cantinho.html',
-                           nome      = nome,
-                           cor       = 'Azul',
-                           linguagem = 'Python',
-                           frase     = 'Feito é melhor que perfeito',
-                           visitas   = visitas)
+    nome      = nome,
+    cor       = 'Azul',
+    linguagem = 'Python',
+    frase     = 'Algo que me representa',
+    visitas   = visitas
+    )
